@@ -17,8 +17,8 @@ var style_003601_5 = function(feature, resolution){
     var offsetX = 8;
     var offsetY = 3;
     var placement = 'point';
-    if ("" !== null) {
-        labelText = String("");
+    if (feature.get("TRACTCE") !== null) {
+        labelText = String(feature.get("TRACTCE"));
     }
     var style = [ new ol.style.Style({
         stroke: new ol.style.Stroke({color: 'rgba(228,26,28,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 3}),

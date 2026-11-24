@@ -11,6 +11,74 @@
         <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        nav {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1000;
+        }
+        
+        nav .nav-brand {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 999;
+        }
+        
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        #map-container {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 100px);
+        }
+        
         html, body, #map {
             width: 100%;
             height: 100%;
@@ -18,10 +86,24 @@
             margin: 0;
         }
         </style>
-        <title>Central California Asthma Collaborative - Healthy Air Neighborhood Maps</title>
+        <title>Healthy Air Neighborhood Maps</title>
     </head>
     <body>
-        <div id="map">
+        <nav>
+            <div class="nav-brand">🗺️ HANMaps</div>
+            <div>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+        
+        <header>
+            <h1>Healthy Air Neighborhood Maps</h1>
+            <p>Interactive air quality and environmental data visualization</p>
+        </header>
+        
+        <div id="map-container">
+            <div id="map"></div>
         </div>
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
@@ -1622,7 +1704,7 @@
             return this._div;
         };
         title.update = function () {
-            this._div.innerHTML = '<h2>Central California Asthma Collaborative - Healthy Air Neighborhood Maps</h2>';
+            this._div.innerHTML = '<h2>Map Layers & Legend</h2>';
         };
         title.addTo(map);
         var baseMaps = {};
